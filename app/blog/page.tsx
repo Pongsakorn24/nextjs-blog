@@ -2,13 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import { Blog } from '@/app/data/blogs'
 
+const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+
 interface BlogResponse {
     count: number;
     blogs: Blog[];
 };
 
 async function getBlogs(): Promise<BlogResponse> {
-    const res = await fetch('http://localhost:3000/api/blogs', {
+    const res = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/api/blogs`, {
         cache: 'no-store'
     });
 

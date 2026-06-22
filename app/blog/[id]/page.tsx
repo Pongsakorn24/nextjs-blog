@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { Blog } from '@/app/data/blogs'
 import { notFound } from 'next/navigation';
 
+const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL
+
 interface PageProps {
     params: Promise<{ id: number }>;
 }
@@ -12,7 +14,7 @@ interface BlogResponse {
 };
 
 async function getBlogsDetail(id: number): Promise<BlogResponse> {
-    const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
+    const res = await fetch(`${NEXT_PUBLIC_API_BASE_URL}/api/blogs/${id}`, {
         cache: 'no-store'
     });
 
